@@ -115,7 +115,25 @@ def __debug_show_img_info(data_info):
 
 
 def __debug_show_img_label(data_info):
+	# this is the label for autisim and control groups
 	print('Dx_group: %s' % ("autism" if data_info['DX_GROUP'] == '1' else 'Control'))
+	# this is the more detail labels for more detail classification
+	label2 = data_info['DSM_IV_TR']
+	if label2 == '0': 
+		print('Control')
+	elif label2 == '1': 
+		print('Autism')
+	elif label2 == '2':
+		print('Asperger')
+	elif label2 == '3':
+		print('PDDNOS')
+	elif label2 == '4':
+		print('Asperger or PDDNOS')
+
+	print('AGE: %s' %(data_info['AGE_AT_SCAN']))
+	print('Sex: %s' % ('male' if data_info['SEX']=='1' else 'female')) # 1 for male, 2 for female
+	print('Hand: %s' % (data_info['HANDEDNESS_CATEGORY'])) # R & L & ambidextrous
+
 
 if __name__ == '__main__':
 	#labels = load_csv('../dataset/ABIDE/ABIDE_pcp/Phenotypic_V1_0b_preprocessed1.csv')
